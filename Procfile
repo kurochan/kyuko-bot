@@ -1,1 +1,1 @@
-main: bundle exec kyuko_bot.rb
+main: bundle exec ruby kyuko_bot.rb -p $PORT
