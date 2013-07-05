@@ -1,0 +1,6 @@
+*~
+*.swp
+*.sql
+Thumbs.db
+.DS_Store
+gems/
