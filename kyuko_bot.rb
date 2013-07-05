@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 require 'rubygems'
 require 'sinatra'
+require 'twitter'
 require 'thin'
 require 'json'
 
@@ -10,8 +11,7 @@ get '/' do
     "Hello World!"
 end
 
-post "#{MAIL}" do
-    message = JSON.parse(params[:message]);
+get MAIL do
 #   return nil unless message
     twitter = Twitter::Client.new(
         :consumer_key => CONSUMER_KEY,
@@ -19,6 +19,10 @@ post "#{MAIL}" do
         :oauth_token => ACCESS_TOKEN,
         :oauth_token_secret => ACCESS_TOKEN_SECRET
     )   
-    twitter.update "received" if message
-    twitter.update "not received" unless message
+    if params[:message].to_s.size > 2
+        message = JSON.parse(params[:message])
+        twitter.update "received" if message
+    else
+        twitter.update "not received" unless message
+    end
 end
