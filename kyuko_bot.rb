@@ -12,12 +12,13 @@ end
 
 post "#{MAIL}" do
     message = JSON.parse(params[:message]);
-    return nil unless message
+#   return nil unless message
     twitter = Twitter::Client.new(
         :consumer_key => CONSUMER_KEY,
         :consumer_secret => CONSUMER_SECRET,
         :oauth_token => ACCESS_TOKEN,
         :oauth_token_secret => ACCESS_TOKEN_SECRET
     )   
-    twitter.update "received"
+    twitter.update "received" if message
+    twitter.update "not received" unless message
 end
