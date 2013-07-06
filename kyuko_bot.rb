@@ -4,7 +4,6 @@ require 'sinatra'
 require 'twitter'
 require 'thin'
 require 'twitter'
-require 'pp'
 
 load 'config.rb'
 
