@@ -3,7 +3,8 @@ require 'rubygems'
 require 'sinatra'
 require 'twitter'
 require 'thin'
-require 'json'
+require 'twitter'
+require 'pp'
 
 load 'config.rb'
 
