@@ -11,7 +11,7 @@ get '/' do
     "Hello World!"
 end
 
-post "#{MAIL}" do
+post MAIL do
     message = params
     subject = message["subject"]
     return unless subject && (subject.include?("休講") || subject.include?("教室変更"))
